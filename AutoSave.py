@@ -23,9 +23,10 @@ def autoSave(folder):
 
 def main():
     folder = getFile()
-    autoSave(folder)
-    print("Saved")
-    time.sleep(.1)
+    for i in range(2000):
+        autoSave(folder)
+        print("Saved")
+        time.sleep(.1)
 
 
 main()
