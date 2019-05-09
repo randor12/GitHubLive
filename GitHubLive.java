@@ -18,9 +18,9 @@ public class GitHubLive {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		/**String command = "/bin/bash -c git status";
+		String command = "/bin/bash -c git status";
 		String newPull = "/bin/bash -c git pull";
 		String newCommit = "/bin/bash -c git commit -m \"New commit\"";
 		String newPush = "/bin/bash -c git push";
@@ -37,9 +37,7 @@ public class GitHubLive {
 	 		new ProcessBuilder(newPull).start();
 	 		new ProcessBuilder(newCommit).start();
 	 		new ProcessBuilder(newPush).start();
-	 	}*/
-		
-		System.out.println("Hello World");
+	 	}
 	 	
 	}
 
