@@ -2,31 +2,22 @@
 # Ryan Nicholas
 # Auto Save Code
 
-import os
+import pyautogui
 import time
 
 
-def getFile():
-    folder = input("Input repository path: ")
-    return folder
-
-
-def autoSave(folder):
-    files = os.listdir(folder)
-    print(files)
-    for f in files:
-        badFile = f.__contains__(".git") or f.__contains__("README")
-        if not badFile:
-            save = open(f)
-            save.close()
+def autoSave():
+    pyautogui.hotkey('ctrl', 's')
 
 
 def main():
-    folder = getFile()
     for i in range(2000):
-        autoSave(folder)
-        print("Saved")
-        time.sleep(.1)
+        if i % 20 == 0:
+            autoSave()
+            print("Saved")
+        else:
+            print("Saving")
+    time.sleep(.1)
 
 
 main()
