@@ -16,17 +16,19 @@ def autoSave(folder):
     print(files)
     for f in files:
         badFile = f.__contains__(".git") or f.__contains__("README")
-        if not badFile:
-            save = open(f)
+        goodFile = f.__contains__(".")
+        if not badFile and goodFile:
+            save = open(folder + f, 'a')
+            if save.readable():
+                print(save.readlines())
             save.close()
 
 
 def main():
     folder = getFile()
-    for i in range(2000):
-        autoSave(folder)
-        print("Saved")
-        time.sleep(.1)
+    autoSave(folder)
+    print("Saved")
+    time.sleep(.1)
 
 
 main()
