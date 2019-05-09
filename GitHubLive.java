@@ -1,44 +1,49 @@
 /**
  * Ryan Nicholas
- * Git Hub automatic push/pull system
+ * Git Hub Live Program
+ * This automatically saves code after pressing 
+ * a button 20 times
  */
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * @author Ryan's Computer
  * @version 2019.05.08
  *
  */
-public class GitHubLive {
+public class GitHubLive extends JFrame {
 	
 	/**
-	 * @param args
-	 * @throws IOException 
+	 * Set up the GitHub code
 	 */
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		String command = "/bin/bash -c git status";
-		String newPull = "/bin/bash -c git pull";
-		String newCommit = "/bin/bash -c git commit -m \"New commit\"";
-		String newPush = "/bin/bash -c git push";
+	public GitHubLive()
+	{
+		initUI();
+	}
+	
+	private void initUI()
+	{
+		add(new SaveFunction());
 		
-		Process proc = new ProcessBuilder(command).start();
-	 	OutputStream out = null;
-	 	
-	 	out = proc.getOutputStream();
-	 	
-	 	String response = out.toString();
-	 	
-	 	if (!response.contains("nothing to commit"))
-	 	{
-	 		new ProcessBuilder(newPull).start();
-	 		new ProcessBuilder(newCommit).start();
-	 		new ProcessBuilder(newPush).start();
-	 	}
-	 	
+		setResizable(false);
+		pack();
+        
+        setTitle("Git Hub Auto Save"); //title
+        setLocationRelativeTo(null); 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit application
+		
 	}
 
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EventQueue.invokeLater(() -> {
+            JFrame ex = new GitHubLive(); //Initialize snake game
+            ex.setVisible(true);
+        });
+	}
 }
