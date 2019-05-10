@@ -7,11 +7,12 @@ import keyboard
 import time
 import git
 
-c = True
-
 path = input("Input the repo path: ")
 
-while c:
+repo = git.Repo(path)
+remote = git.Repo.remote(repo)
+
+while True:
     try:
         if keyboard.is_pressed("ctrl") and keyboard.is_pressed("s"):
             file = os.listdir(path)
@@ -20,13 +21,12 @@ while c:
                 if goodFile:
                     git.Remote.add(path + f)
             git.Repo.commit(repo)
-            git.Remote.push(repo)
-            git.Remote.pull(repo)
+            git.Remote.push(remote)
+            git.Remote.pull(remote)
         elif keyboard.is_pressed("ctrl") and keyboard.is_pressed("q"):
-            c = False
+            break
         else:
             pass
     except:
         break
     time.sleep(.05)
-
