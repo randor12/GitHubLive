@@ -8,11 +8,11 @@ from git import Repo
 
 path = input("Input the repo path: ")
 
-repo = Repo(path)
-
 while True:
     try:
+        repo = Repo(path)
         if keyboard.is_pressed("ctrl") and keyboard.is_pressed("s"):
+            print("Changing")
             fileList = os.listdir(path)
             actualFiles = []
             for file in fileList:
