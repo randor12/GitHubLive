@@ -12,3 +12,5 @@ The purpose of this code is to allow for live updating of code. The current edit
   This would allow for more people to code simultaneously. 
   Teams would be able to get work done faster
 ```
+### Requirements
+The user must already be signed in to GitHub to allow the program to work
