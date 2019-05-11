@@ -4,29 +4,26 @@
 
 import os
 import keyboard
-import time
-import git
+from git import Repo
 
 path = input("Input the repo path: ")
 
-repo = git.Repo(path)
-remote = git.Repo.remote(repo)
+repo = Repo(path)
 
 while True:
     try:
         if keyboard.is_pressed("ctrl") and keyboard.is_pressed("s"):
-            file = os.listdir(path)
-            for f in file:
-                goodFile = f.__contains__(".")
-                if goodFile:
-                    git.Remote.add(path + f)
-            git.Repo.commit(repo)
-            git.Remote.push(remote)
-            git.Remote.pull(remote)
+            fileList = os.listdir(path)
+            commitMessage = "Changed code"
+            repo.index.add(fileList)
+            repo.index.commit(commitMessage)
+            origin = repo.remote('origin')
+            origin.push()
+            origin.pull()
+            print("Changed!")
         elif keyboard.is_pressed("ctrl") and keyboard.is_pressed("q"):
             break
         else:
             pass
     except:
         break
-    time.sleep(.05)
